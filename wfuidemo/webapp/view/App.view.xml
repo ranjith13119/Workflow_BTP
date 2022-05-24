@@ -1,0 +1,67 @@
+<mvc:View
+    controllerName="wfUidemo.wfuidemo.controller.App"
+    xmlns:mvc="sap.ui.core.mvc" 
+    displayBlock="true"
+    xmlns="sap.m" 
+    xmlns:l="sap.ui.layout"
+    xmlns:ux="sap.uxap" 
+    xmlns:core="sap.ui.core" 
+    xmlns:f="sap.ui.layout.form"
+>
+
+    <App id="app">
+        <pages>
+            <Page id="page" showHeader="false" >
+                <content > 
+                    <l:VerticalLayout width="100%" id="__layout0">
+                        <l:content>
+                            <ObjectHeader title="{/task/Title}" titleActive="false" id="__header0">
+                                <attributes>
+                                    <ObjectAttribute id = "objlayout0" title="{i18n>createdOn}" text="{/task/CreatedOn}"/>
+                                    <ObjectAttribute id = "objlayout1" title="{i18n>description}" text="{/task/Description}"/>
+                                </attributes>
+                                <statuses>
+                                    <ObjectStatus id = "objlayout2" text="{/task/Status}" state="None"/>
+                                    <ObjectStatus id = "objlayout3" text="{/task/Priority}" state="{/task/PriorityState}"/>
+                                </statuses>
+                            </ObjectHeader>
+                        
+                            <Panel class="sapUiResponsiveMargin" id = "__layout1" accessibleRole="Region">
+                                <headerToolbar>
+                                    <OverflowToolbar id = "__layout10">
+                                        <Title text="Order Details" id = "__layout100"/>
+                                    </OverflowToolbar>
+                                </headerToolbar>
+                                <content>
+                                    <f:SimpleForm id = "__layout11" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout">
+                                        <Label id = "__layout110" text="Customer Name:"/>
+                                        <Input id = "__layout111" value="{/orderData/CustomerName}" editable = "false"/>
+                                        <Label id = "__layout1142" text="Product Name"/>
+                                        <Input id = "__layout1152" value="{/orderData/ProductName}" editable = "false"/>
+                                        <Label id = "__layout116" text="Quanity"/>
+                                        <Input id = "__layout117" value="{/orderData/Quantity}" editable = "false"/>
+                                    </f:SimpleForm>
+                                </content>
+                            </Panel>
+
+
+                            <Panel class="sapUiResponsiveMargin" id = "__layout2" accessibleRole="Region">
+                                <headerToolbar>
+                                    <OverflowToolbar id = "__layout12">
+                                        <Title text="Delivery information" id = "__layout102"/>
+                                    </OverflowToolbar>
+                                </headerToolbar>
+                                <content>
+                                    <f:SimpleForm id = "__layout121" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout">
+                                        <Label id = "__layout120" text="Comments: "/>
+                                        <Input id = "__layout122" value="{/response/comments}"/>                                       
+                                    </f:SimpleForm>
+                                </content>
+                            </Panel>
+                        </l:content>
+                    </l:VerticalLayout>                
+                </content>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>
