@@ -1,0 +1,267 @@
+{
+    "_version": "1.26.0",
+    "sap.app": {
+        "id": "trail.workflowuimodule",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.3"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.8.4",
+            "toolsId": "58189bcc-d766-4431-8b6f-b8ebb8fc5823"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.82.2",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "trail.workflowuimodule.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {}
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "trail.workflowuimodule.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteMyTaskUI",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetMyTaskUI"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetMyTaskUI": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "MyTaskUI",
+                    "viewName": "MyTaskUI"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "trail.workflowuimodule.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "testtaskui"
+    },
+    "sap.bpa.task": {
+        "_version": "1.0.0",
+        "outcomes": [
+            {
+                "id": "approve",
+                "label": "Approve",
+                "type": "positive"
+            },
+            {
+                "id": "reject",
+                "type": "negative",
+                "label": "Reject"
+            }
+        ],
+        "inputs": {
+            "$schema": "http://json-schema.org/draft-07/schema",
+            "title": "input",
+            "type": "object",
+            "required": [
+                "Date",
+                "EmployeeName",
+                "AssignedShift",
+                "RequestingShift",
+                "Reason",
+                "cust_externalCode",
+                "cust_tempInfo_externalCode",
+                "newChoice",
+                "integerTest",
+                "newTable",
+                "newCheckbox",
+                "newDropdown"
+            ],
+            "properties": {
+                "Date": {
+                    "type": "string",
+                    "title": "Date",
+                    "description": "Shift Swap Date"
+                },
+                "EmployeeName": {
+                    "type": "string",
+                    "title": "Employee Name",
+                    "description": "Target Employee Name"
+                },
+                "AssignedShift": {
+                    "type": "string",
+                    "title": "Assigned Shift",
+                    "description": "Target Shift"
+                },
+                "RequestingShift": {
+                    "type": "string",
+                    "title": "Requesting Shift",
+                    "description": "Requesting Shift"
+                },
+                "Reason": {
+                    "type": "string",
+                    "title": "Reason",
+                    "description": "Reason"
+                },
+                "cust_externalCode": {
+                    "type": "string",
+                    "title": "External Code",
+                    "description": "cust_externalCode"
+                },
+                "cust_tempInfo_externalCode": {
+                    "type": "string",
+                    "title": "cust_tempInfo_externalCode",
+                    "description": "cust_tempInfo_externalCode"
+                },
+                "newChoice": {
+                    "title": "New Choice",
+                    "description": "",
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "integerTest": {
+                    "type": "number",
+                    "title": "Integer Value",
+                    "minimum": 0,
+                    "maximum": 10
+                },
+                "newTable": {
+                    "title": "TableDataType",
+                    "description": "",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/newTableItems"
+                    }
+                },
+                "newDropdown": {
+                    "title": "New Dropdown",
+                    "description": "",
+                    "type": "string",
+                    "enum": [
+                        "Option 1",
+                        "Option 2"
+                    ]
+                },
+                "newCheckbox": {
+                    "title": "New Checkbox",
+                    "description": "",
+                    "type": "boolean"
+                }
+            },  
+            "definitions": {
+                "newTableItems": {
+                    "type": "object",
+                    "required": [],
+                    "properties": {
+                        "newText": {
+                            "title": "New Text",
+                            "description": "",
+                            "type": "string"
+                        },
+                        "newText1": {
+                            "title": "New Text1",
+                            "description": "",
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        },
+        "outputs": {
+            "$schema": "http://json-schema.org/draft-07/schema",
+            "title": "output",
+            "type": "object",
+            "required": [
+                "comment"
+            ],
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "title": "Comment",
+                    "description": "Comment to users"
+                }
+            }
+        },
+        "category": "approval"
+    }
+}
