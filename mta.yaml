@@ -1,0 +1,21 @@
+_schema-version: "3.2"
+ID: workflowTraining
+version: 1.0.4
+modules:
+- name: workflow-module
+  type: com.sap.application.content
+  path: workflow-module
+  requires:
+  - name: sap_processautomation_deep
+    parameters:
+      content-target: true
+      service-key:
+        config:
+          deployUsageScenario: workflow
+        name: spa-workflow-service-key
+resources:
+- name: sap_processautomation_deep
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: process-automation-service
+    service-plan: standard

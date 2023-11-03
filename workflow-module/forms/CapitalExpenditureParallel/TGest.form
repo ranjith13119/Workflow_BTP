@@ -1,0 +1,23 @@
+{
+    "id": "tgest",
+    "schemaVersion": "1.1.0",
+    "name": "TGest",
+    "revision": "1.0",
+    "type": "task",
+    "readOnly": false,
+    "content": [
+        {
+            "id": "test",
+            "type": "section",
+            "title": "Test",
+            "content": []
+        }
+    ],
+    "decisions": [
+        {
+            "id": "approve",
+            "text": "Approve",
+            "decisionType": ""
+        }
+    ]
+}
